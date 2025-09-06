@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Give Feedback</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Give Your Feedback</h1>
+      <div class="feedback-card">
+        <form id="feedbackForm" autocomplete="off">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone number:</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              pattern="[0-9]{10}"
+              required
+              autocomplete="off"
+              spellcheck="false"
+            />
+          </div>
+          <div class="form-group">
+            <label for="review">Review:</label>
+            <textarea
+              id="review"
+              name="review"
+              rows="4"
+              required
+              autocomplete="off"
+              spellcheck="false"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="rating">Rating:</label>
+            <div class="star-rating">
+              <span class="star" data-rating="1">&#9734;</span>
+              <span class="star" data-rating="2">&#9734;</span>
+              <span class="star" data-rating="3">&#9734;</span>
+              <span class="star" data-rating="4">&#9734;</span>
+              <span class="star" data-rating="5">&#9734;</span>
+              <input type="hidden" id="rating" name="rating" value="0" />
+            </div>
+          </div>
+
+          <div class="button-container">
+            <button type="submit">Submit Review</button>
+            <button type="button" onclick="window.location.href='/home'">
+              Go Home
+            </button>
+            <button type="button" onclick="window.location.href='/reviews'">
+              View Reviews
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="toastContainer"></div>
+
+    <script src="/js/script.js"></script>
+  </body>
+</html>

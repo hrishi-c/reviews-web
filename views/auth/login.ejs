@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+
+      <div class="button-container">
+        <button id="patientBtn" class="active">Patient</button>
+        <button id="doctorBtn">Doctor</button>
+      </div>
+
+      <form id="patientForm" autocomplete="off">
+        <div class="form-group">
+          <label for="secretKey">Secret Key:</label>
+          <input type="password" id="secretKey" name="secretKey" required />
+          <button type="submit" class="inline-btn">Login as Patient</button>
+        </div>
+        <div id="message" class="notification"></div>
+      </form>
+
+      <form
+        id="doctorForm"
+        class="form-group"
+        style="display: none"
+        autocomplete="off"
+        onsubmit="return false;"
+      >
+        <div class="form-group">
+          <button type="button" id="sendDoctorOtpBtn" class="inline-btn">
+            Send OTP
+          </button>
+        </div>
+
+        <div id="doctorOtpSection" class="form-group" style="display: none">
+          <input
+            type="text"
+            id="doctorOtp"
+            placeholder="Enter OTP"
+            class="input-field"
+          />
+          <button type="button" id="verifyDoctorOtpBtn" class="inline-btn">
+            Verify OTP
+          </button>
+        </div>
+
+        <div id="doctorOtpMessage" class="notification"></div>
+      </form>
+    </div>
+
+    <script src="/js/login.js"></script>
+  </body>
+</html>

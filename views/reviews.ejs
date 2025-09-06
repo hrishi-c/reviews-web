@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View Reviews</title>
+    <link rel="stylesheet" href="/css/reviews.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="page-header">
+        <h1>Reviews:</h1>
+        <div class="sort-container">
+          <label for="sort">Sort Reviews:</label>
+          <div class="custom-dropdown" id="customDropdown">
+            <div class="selected">
+              <% 
+                if (sort === 'asc') { %>
+                  Oldest First
+              <% } else if (sort === 'rating_desc') { %>
+                  Highest Rating
+              <% } else if (sort === 'rating_asc') { %>
+                  Lowest Rating
+              <% } else { %>
+                  Newest First
+              <% } %>
+            </div>
+            <div class="options">
+              <div data-value="desc" <% if(sort==='desc'||!sort){ %>class="active"<% } %>>
+                Newest First
+              </div>
+              <div data-value="asc" <% if(sort==='asc'){ %>class="active"<% } %>>
+                Oldest First
+              </div>
+              <div data-value="rating_desc" <% if(sort==='rating_desc'){ %>class="active"<% } %>>
+                Highest Rating
+              </div>
+              <div data-value="rating_asc" <% if(sort==='rating_asc'){ %>class="active"<% } %>>
+                Lowest Rating
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="reviewsContainer" class="reviews-grid">
+        <% if (reviews.length === 0) { %>
+          <div class="review-card no-reviews">
+            <h3>No Reviews Yet</h3>
+            <p>Be the first to leave a review!</p>
+          </div>
+        <% } else { %>
+          <% reviews.forEach(review => { %>
+            <div class="review-card">
+              <h3>Name: <%= review.name %></h3>
+              <% if (user && user.role === 'doctor') { %>
+                <p>Phone: <%= review.phone %></p>
+              <% } %>
+              <p>
+                Date: <%= new Date(review.date).toLocaleString('en-IN', {
+                  timeZone: 'Asia/Kolkata',
+                  day: '2-digit',
+                  month: 'short',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  hour12: true
+                }) %>
+              </p>
+              <p>
+                Rating: 
+                <% for (let i = 0; i < review.rating; i++) { %>&#9733; <% } %>
+              </p>
+              <p>Review: <%= review.review %></p>
+            </div>
+          <% }); %>
+        <% } %>
+      </div>
+
+      <button type="button" class="go-home" onclick="window.location.href='/home'">
+        Go Home
+      </button>
+
+    </div>
+
+    <script src="/js/reviews.js"></script>
+  </body>
+</html>
